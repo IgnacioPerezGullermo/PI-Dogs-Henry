@@ -1,0 +1,53 @@
+.navbar{
+    width: 90%;
+    background-color: rgba(78, 77, 77, 0.667);
+    align-self: center;
+    border-radius: 4vw;
+    height: 5%;
+    margin-top: 1vw;
+    display: flex;
+    box-shadow : 5px 5px 40px rgba(0, 0, 0, 0.667);
+}
+.search-container{
+    position:absolute;
+    display: flex;
+    align-self:center;
+    justify-content: right;
+    right: 9%;
+    
+}
+.app-name{
+    font-family: 'Rubik Dirt', cursive;
+    color: $color3;
+    align-self:center;
+    width: 30%;
+    line-height: 5%;
+    margin-left: 2%;
+    font-size: 22px;
+    text-decoration: none;
+}
+.app-autor{
+    font-family: 'Rubik Dirt', cursive;
+    color: $color4;
+    align-self:center;
+    position: absolute;
+    left: 15%;
+    font-size: 18px;
+    margin-top: 1.5vw;
+}
+.create-btn{
+    background-color: $color3;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    position: relative;
+    right: 100%;
+    letter-spacing: 0.5px;
+    font-size: 18px;
+    line-height: 160%;
+    margin-top: 3%;
+    color: black;
+    transition: all 0.3s ease 0s;
+    border-radius: 15px; 
+    border: transparent;
+    cursor: pointer;
+}

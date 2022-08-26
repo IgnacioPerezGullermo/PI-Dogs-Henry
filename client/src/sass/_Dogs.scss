@@ -1,0 +1,47 @@
+
+.dogscontainer{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    height: 80%;
+    position: absolute;
+    top: 9%;
+    left: 5%;
+    justify-content: center;
+
+}
+.next-button{
+    position:absolute;
+    background-color: transparent;
+    right: 20%;
+    height: 5%;
+    width: 5%;
+    bottom: -12%;
+    border: none;
+}
+.prev-button{
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    left: 20%;
+    bottom: -12%;
+    width: 5%;
+    height: 5%;
+    
+    
+}
+.arrow-prev{
+    position: relative;
+    left: 0%;
+    align-self: center;
+    height:100%;
+    transform: scaleX(-1);
+    cursor:pointer;
+}
+.arrow-next{
+    position: relative;
+    left: 0%;
+    align-self: center;
+    height:100%;
+    cursor:pointer;
+}

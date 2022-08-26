@@ -1,6 +1,6 @@
 require('dotenv').config();
 const axios = require('axios');
-const { Dog } = require('../db');
+const { Dog, Temperament } = require('../db');
 const apiKey = process.env.API_KEY;
 
 const getApiInfo = async () => {
@@ -15,9 +15,11 @@ const getApiInfo = async () => {
       breed_group: d.breed_group,
       temperament: d.temperament,
       life_span: d.life_span,
-      height: d.height,
-      weight: d.weight,
-      reference_image_id: d.reference_image_id,
+      weight_min: parseInt(d.weight.metric.slice(0, 2).trim()),
+      weight_max: parseInt(d.weight.metric.slice(4).trim()),
+      height_min: parseInt(d.height.metric.slice(0, 2).trim()),
+      height_max: parseInt(d.height.metric.slice(4).trim()),
+      reference_image_id: d.image.url,
       origin: d.origin,
     };
   });
@@ -25,19 +27,41 @@ const getApiInfo = async () => {
   return apiInfo;
 };
 
+const getDBDog = async () => {
+  var dogsDB = await Dog.findAll({
+    include: {
+      model: Temperament,
+      attributes: ['name'],
+      through: {
+        attributes: [],
+      },
+    },
+  });
+  //console.log(dogsDB);
+  return dogsDB;
+};
+
 const getAllDogs = async (name) => {
   if (name) {
     name = name.replace(/['"]+/g, '');
-    console.log(name);
-    const dogName = await axios
-      .get(`https://api.thedogapi.com/v1/breeds/search?q=${name}`)
-      .catch((error) => {
-        return res.status(500).send('errr');
-      });
-    return dogName.data;
+    //console.log(name);
+    const apiInfo = await getApiInfo();
+    const DBinfo = await getDBDog();
+    const allDogs = apiInfo.concat(DBinfo);
+    const dogData = allDogs.filter((d) =>
+      d.name.toLowerCase().includes(name.toLowerCase())
+    );
+    //console.log(dogData);
+    // const laconchadetumadre = dogName.map((data) => {
+    //   data.reference_image_id = data.image.url;
+    // });
+    // console.log(laconchadetumadre);
+    return dogData;
   } else {
     const apiInfo = await getApiInfo();
-    const allDogs = [...apiInfo];
+    const DBinfo = await getDBDog();
+    const allDogs = apiInfo.concat(DBinfo);
+    //console.log(DBinfo);
     return allDogs;
   }
 };
@@ -54,8 +78,10 @@ const getDogById = async (id) => {
       breed_group: d.breed_group,
       temperament: d.temperament,
       life_span: d.life_span,
-      height: d.height,
-      weight: d.weight,
+      weight_min: parseInt(d.weight.metric.slice(0, 2).trim()),
+      weight_max: parseInt(d.weight.metric.slice(4).trim()),
+      height_min: parseInt(d.height.metric.slice(0, 2).trim()),
+      height_max: parseInt(d.height.metric.slice(4).trim()),
       reference_image_id: d.reference_image_id,
       origin: d.origin,
     };
@@ -93,11 +119,17 @@ const getTemperament = async () => {
   });
   const cleaningTemps = new Set(sepTemps);
   const cleanTemps = [...cleaningTemps];
-  return cleanTemps;
+  const objectTemps = cleanTemps.map((temp) => {
+    return {
+      name: temp,
+    };
+  });
+  return objectTemps;
 };
 
 module.exports = {
   getAllDogs,
   getDogById,
   getTemperament,
+  getDBDog,
 };

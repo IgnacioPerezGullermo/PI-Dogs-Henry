@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap");
+.container {
+  background-image: linear-gradient(to left bottom, #5e0d66, #7a0e67, #931566, #aa2263, #be3160, #ce415c, #dc5258, #e76454, #f17950, #f98f4d, #fda54d, #ffbc50);
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 45px;
+  font-family: "Rubik Dirt", cursive;
+  font-weight: 100;
+  color: #FFBC50;
+  width: 42%;
+  position: absolute;
+  display: flex;
+  top: 29%;
+  left: 48%;
+}
+
+.subtitle {
+  font-size: 30px;
+  font-family: "Rubik Dirt", cursive;
+  font-weight: 100;
+  color: #dfe0df;
+  width: 32%;
+  position: absolute;
+  display: flex;
+  top: 37%;
+  left: 48%;
+}
+
+.doglanding {
+  width: 40%;
+  overflow: hidden;
+  position: absolute;
+  top: 10%;
+  left: 15%;
+}
+
+.btn-landing {
+  position: absolute;
+  width: 10%;
+  height: 7%;
+  top: 52%;
+  left: 48%;
+  background-color: #a21d64;
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-size: 20px;
+  color: white;
+  transition: all 0.3s ease 0s;
+  border-radius: 15px;
+  border: transparent;
+  cursor: pointer;
+}
+
+.btn-landing:hover {
+  box-shadow: -15px 5px 40px rgba(110, 47, 82, 0.6352941176);
+  transform: translateX(7px);
+}
+
+.dog-card {
+  width: 19vw;
+  height: 22vw;
+  display: flex;
+  flex-direction: column;
+  margin: 1vw 1vw;
+  border-radius: 8px;
+  background-color: rgba(38, 36, 36, 0.617);
+  box-shadow: 5px 5px 10px rgba(35, 33, 33, 0.667);
+  transition: 1000ms;
+}
+
+.dog-card:hover {
+  box-shadow: 5px 5px 50px rgba(170, 163, 163, 0.667);
+}
+
+.dog-image {
+  border-radius: 8px;
+  float: left;
+  width: 19vw;
+  height: 16vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.dog-name {
+  font-size: 16px;
+  letter-spacing: 0.1vw;
+  text-align: center;
+  margin: 0.5vw;
+  font-family: "Rubik Dirt", cursive;
+  color: #FFBC50;
+}
+
+.dog-temps {
+  font-size: 10px;
+  width: 80%;
+  font-family: "Roboto";
+  color: #dfe0df;
+  margin-top: 0.5vw;
+  align-self: center;
+  text-align: center;
+}
+
+.dogscontainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 80%;
+  position: absolute;
+  top: 9%;
+  justify-content: center;
+}
+
+.next-button {
+  position: absolute;
+  background-color: transparent;
+  right: 2%;
+  height: 100%;
+  width: 5%;
+  border: none;
+}
+
+.prev-button {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  left: 2%;
+  width: 5%;
+  height: 100%;
+}
+
+.arrow-prev {
+  position: relative;
+  left: -50%;
+  align-self: center;
+  height: 20%;
+  transform: scaleX(-1);
+  cursor: pointer;
+}
+
+.arrow-next {
+  position: relative;
+  left: -70%;
+  align-self: center;
+  height: 20%;
+  cursor: pointer;
+}
+
+.navbar {
+  width: 90%;
+  background-color: rgba(78, 77, 77, 0.667);
+  align-self: center;
+  border-radius: 4vw;
+  height: 5%;
+  margin-top: 1vw;
+  display: flex;
+  box-shadow: 5px 5px 40px rgba(0, 0, 0, 0.667);
+}
+
+.search-container {
+  position: absolute;
+  display: flex;
+  align-self: center;
+  justify-content: right;
+  right: 9%;
+}
+
+.app-name {
+  font-family: "Rubik Dirt", cursive;
+  color: #FFBC50;
+  align-self: center;
+  width: 30%;
+  line-height: 5%;
+  margin-left: 2%;
+  font-size: 22px;
+  text-decoration: none;
+}
+
+.app-autor {
+  font-family: "Rubik Dirt", cursive;
+  color: #dfe0df;
+  align-self: center;
+  position: absolute;
+  left: 15%;
+  font-size: 18px;
+  margin-top: 1.5vw;
+}
+
+.App {
+  background-image: linear-gradient(to left bottom, #5e0d66, #7a0e67, #931566, #aa2263, #be3160, #ce415c, #dc5258, #e76454, #f17950, #f98f4d, #fda54d, #ffbc50);
+}/*# sourceMappingURL=styles.css.map */

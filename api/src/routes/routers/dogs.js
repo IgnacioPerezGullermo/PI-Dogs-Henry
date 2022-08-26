@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { getAll, getDogId } = require('../../controllers/dogs');
+const { getAll, getDogId, postDog } = require('../../controllers/dogs');
 
 const router = express.Router();
 
@@ -10,4 +10,5 @@ router.get('/', getAll);
 
 router.get('/:id', getDogId);
 
+router.post('/', postDog);
 module.exports = router;

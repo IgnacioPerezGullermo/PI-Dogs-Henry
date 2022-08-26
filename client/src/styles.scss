@@ -1,0 +1,11 @@
+@import "sass/Landing";
+@import "sass/Dog";
+@import "sass/Dogs";
+@import "sass/NavBar";
+@import "sass/AddDog";
+@import "sass/DogDetail";
+@import "sass/Search";
+
+.App{
+    background-image: linear-gradient(to left bottom, #5e0d66, #7a0e67, #931566, #aa2263, #be3160, #ce415c, #dc5258, #e76454, #f17950, #f98f4d, #fda54d, #ffbc50);
+}
