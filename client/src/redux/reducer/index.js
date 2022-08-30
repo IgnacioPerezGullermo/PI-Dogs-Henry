@@ -3,6 +3,7 @@ import {
   GET_DOG_NAME,
   GET_TEMPS,
   GET_DOG_DETAIL,
+  DELETE_DETAILS,
 } from '../actions/Types';
 
 const initialState = {
@@ -30,6 +31,11 @@ const rootReducer = (state = initialState, action) => {
         temps: action.payload,
       };
     case GET_DOG_DETAIL:
+      return {
+        ...state,
+        dogDetail: action.payload,
+      };
+    case DELETE_DETAILS:
       return {
         ...state,
         dogDetail: action.payload,

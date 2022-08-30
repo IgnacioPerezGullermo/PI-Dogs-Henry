@@ -2,7 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../../styles.css';
 
-export default function Dog({ name, temps, temp, id, reference_image_id }) {
+export default function Dog({
+  name,
+  temps,
+  temp,
+  id,
+  reference_image_id,
+  order,
+}) {
   if (!temps) {
     return (
       <div className="dog-card" style={styles}>

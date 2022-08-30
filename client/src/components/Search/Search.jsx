@@ -4,28 +4,32 @@ import { useDispatch } from 'react-redux';
 import { getDogsName } from '../../redux/actions';
 import styles from '../../styles.css';
 
-const Search = () => {
-  const dispatch = useDispatch();
-  const [name, setName] = useState('');
+const Search = ({ Pagina, setPagina, name, setName }) => {
+  const [input, setInput] = useState('');
 
   const handleInputChange = (e) => {
-    e.preventDefault();
-    setName(e.target.value);
+    setInput(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name !== '') {
-      dispatch(getDogsName(name));
-      setName('');
+    if (input !== '') {
+      setName(input);
     } else {
-      alert('Write a pokemon');
+      alert('Write a dog');
     }
+  };
+  const handleClick = (e) => {
+    e.preventDefault();
+    setInput('');
+    setName('');
+    setPagina(1);
   };
 
   return (
     <div>
       <form
+        className="search-container"
         onSubmit={(e) => {
           handleSubmit(e);
         }}
@@ -37,10 +41,13 @@ const Search = () => {
           onChange={(e) => {
             handleInputChange(e);
           }}
-          value={name}
+          value={input}
         />
         <button className="search-btn" type="submit">
           Buscar
+        </button>
+        <button className="clear-btn" onClick={(e) => handleClick(e)}>
+          Clear
         </button>
       </form>
     </div>

@@ -13,20 +13,20 @@
 .next-button{
     position:absolute;
     background-color: transparent;
-    right: 20%;
-    height: 5%;
+    right: 15%;
+    height: 100%;
     width: 5%;
-    bottom: -12%;
+    bottom: 0;
     border: none;
 }
 .prev-button{
     position: absolute;
     background-color: transparent;
     border: none;
-    left: 20%;
-    bottom: -12%;
+    left: 15%;
+    bottom: 0%;
     width: 5%;
-    height: 5%;
+    height: 100%;
     
     
 }
@@ -44,4 +44,36 @@
     align-self: center;
     height:100%;
     cursor:pointer;
+}
+.pagination-container{
+
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    height: 8%;
+}
+.buttons-bar{
+    position: absolute;
+    top: -10%;
+    width: 60%;
+    height: 100%;
+    margin-left: 18%;
+    margin-bottom: 2%;
+    align-content: center;
+    text-align: center;
+}
+.page-button{
+    width: 3.5%;
+    height: 50%;
+    margin-inline: 0.2em;
+    background-color: $color5;
+    border-radius: 15px;
+    color: $color3;
+    border: transparent;
+    cursor: pointer;
+    font-size: 16px;
+}
+.loader{
+    width: 40vw;
+    height: 40vw;
 }

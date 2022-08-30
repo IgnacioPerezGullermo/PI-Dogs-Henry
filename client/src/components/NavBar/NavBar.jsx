@@ -1,14 +1,28 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../../styles.scss';
+import { Filters } from '../Filters/Filters';
 import Search from '../Search/Search';
 
-export const NavBar = () => {
+export const NavBar = ({
+  name,
+  setName,
+  order,
+  setOrder,
+  filterDb,
+  setFilterDb,
+  Pagina,
+  setPagina,
+  filterTemps,
+  setFilterTemps,
+}) => {
   const [inputText, setInputText] = useState('');
   let inputHandler = (e) => {
     var minuculas = e.target.value.toLowerCase();
     setInputText(minuculas);
   };
+
+  //console.log(order, setOrder);
   return (
     <div className="navbar">
       <Link className="app-name" to="/home">
@@ -22,8 +36,25 @@ export const NavBar = () => {
       <Link to="/create">
         <button className="create-btn">Create Dog Breed</button>
       </Link>
+      <div className="filters-container">
+        <Filters
+          order={order}
+          setOrder={setOrder}
+          filterDb={filterDb}
+          setFilterDb={setFilterDb}
+          Pagina={Pagina}
+          setPagina={setPagina}
+          filterTemps={filterTemps}
+          setFilterTemps={setFilterTemps}
+        ></Filters>
+      </div>
       <div className="search-container" style={styles}>
-        <Search />
+        <Search
+          Pagina={Pagina}
+          setPagina={setPagina}
+          name={name}
+          setName={setName}
+        />
       </div>
     </div>
   );

@@ -9,25 +9,47 @@ import {
   DELETE_DETAILS,
 } from './Types';
 
-export const getDogs = (page, limit) => {
+export const getDogs = (name, page, limit, order, filterDB, filterTemps) => {
   return async (dispatch) => {
     try {
-      const url = `/dogs?page=${page}&limit=${limit}`;
-      const info = await axios.get(url);
-      return dispatch({
-        type: GET_DOGS,
-        payload: info.data,
-      });
+      if (name) {
+        if (page === '') {
+          page = 1;
+        }
+        const url = `/dogs?name=${name}&page=${page}&limit=8`;
+        const info = await axios.get(url);
+        return dispatch({
+          type: GET_DOG_NAME,
+          payload: info.data,
+        });
+      }
+      //console.log(order);
+      if (order != null && filterDB != null && filterTemps != null) {
+        const url = `/dogs?page=${page}&limit=${limit}&order=${order}&filterDB=${filterDB}&filterTemps=${filterTemps}`;
+        const info = await axios.get(url);
+        return dispatch({
+          type: GET_DOGS,
+          payload: info.data,
+        });
+      }
+      if (order != null && filterDB != null && filterTemps === null) {
+        const url = `/dogs?page=${page}&limit=${limit}&order=${order}&filterDB=${filterDB}`;
+        const info = await axios.get(url);
+        return dispatch({
+          type: GET_DOGS,
+          payload: info.data,
+        });
+      }
     } catch (error) {
       console.log(error);
     }
   };
 };
 
-export const getDogsName = (name) => {
+export const getDogsName = (name, pagina) => {
   return async (dispatch) => {
     try {
-      const url = `/dogs?name=${name}`;
+      const url = `/dogs?name=${name}&page=${pagina}&limit=8`;
       const info = await axios.get(url);
       return dispatch({
         type: GET_DOG_NAME,
@@ -64,8 +86,8 @@ export const cleanDogs = () => {
 export const postDog = (payload) => {
   return async () => {
     try {
-      const createPoke = await axios.post('/dogs', payload);
-      return createPoke;
+      const createDog = await axios.post('/dogs', payload);
+      return createDog;
     } catch (e) {
       console.log(e);
     }
