@@ -184,7 +184,7 @@ export const AddDog = () => {
       ...input,
       [e.target.name]: e.target.value,
     });
-    //setFormError(validation(input));
+    setFormError(validation(input));
   };
 
   //DELETE TEMPS
@@ -205,25 +205,22 @@ export const AddDog = () => {
   //SUBMIT
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormError(validation(input));
-    if (!formError) {
-      alert('Your dog has been created successfully');
-      dispatch(postDog(input));
-      setInput({
-        name: '',
-        life_span: '',
-        origin: '',
-        reference_image_id: '',
-        bred_for: '',
-        breed_group: '',
-        weight_min: '',
-        weight_max: '', // aca quiero meter los dos valores de...
-        height_min: '',
-        height_max: '',
-        temps: [],
-      });
-      history.push('/home');
-    }
+    alert('Your dog has been created successfully');
+    dispatch(postDog(input));
+    setInput({
+      name: '',
+      life_span: '',
+      origin: '',
+      reference_image_id: '',
+      bred_for: '',
+      breed_group: '',
+      weight_min: '',
+      weight_max: '', // aca quiero meter los dos valores de...
+      height_min: '',
+      height_max: '',
+      temps: [],
+    });
+    history.push('/home');
   };
 
   return (
