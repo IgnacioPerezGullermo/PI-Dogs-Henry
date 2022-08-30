@@ -4,7 +4,7 @@
     text-decoration: none;
     letter-spacing: 0.5px;
     height: 100%;
-    font-size: 14px;
+    font-size: 1vw;
     line-height: 130%;
     margin-top: 3%;
     color: black;
@@ -28,18 +28,19 @@
     height: 100%;
     border-radius: 15px; 
     line-height: 160%;
-    font-size: 14px;
+    font-size: 1vw;
     margin-bottom: 4vh;
     position: relative;
     left: -20%;
     z-index: 1;
+    border: none;
 }
 .clear-btn{
     background-color: $color3;
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
     letter-spacing: 0.5px;
-    font-size: 13px;
+    font-size: 1vw;
     line-height: 160%;
     margin-top: 3%;
     color: black;

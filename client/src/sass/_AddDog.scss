@@ -6,7 +6,7 @@
     left: 15%;
     width: 70%;
     height: 90%;
-    padding: 12px 20px;
+    padding: 1vw 2vw;
     margin: 8px 0;
     box-sizing: border-box;
     
@@ -14,9 +14,12 @@
 .form-title{
     font-family: 'Rubik Dirt', cursive;
     color: $color3;
+    width: 100%;
+    text-align: center;
     align-self:center;
-    font-size: 1.8vw;
-    margin-left: 7%;
+    font-size: 2.5vw;
+    margin-block: 0.2vw;
+    
 }
 .left-side{
     width: 49%;
@@ -33,15 +36,16 @@
 }
 
 .labels{
-    margin-top: 20px; 
+    font-size: 1.3vw;
     width: 100%;
     font-family: Roboto, sans-serif;
 }
 
 .inputs{
     margin-top: 1%;
-    margin-bottom: 2%;
+    margin-bottom: 1.3%;
     width: 80%;
+    height: 4%;
 }
 
 .number-inputs-start{
@@ -54,10 +58,12 @@
     text-align: center;
     margin-top: 0.5%;
     margin-bottom: 3%;
+    font-size: 1.5vw;
 }
 .units-labels{
     font-family: Roboto, sans-serif;
     margin-left: 4%;
+    font-size: 1.5vw;
 }
 .number-inputs-end{
     width: 30%;
@@ -74,6 +80,7 @@
 .temps-list-title{
     font-family: Roboto, sans-serif;
     margin-left: 2%;
+    font-size: 1.5vw;
 }
 .temp-item{
     margin-left: 1%;
@@ -201,6 +208,7 @@ position: absolute;
         top: 5%;
         width: 100%;
         font-family: Roboto, sans-serif;
+        font-size: 1.5vw;
       }
       .loader-detail{
         position: absolute;

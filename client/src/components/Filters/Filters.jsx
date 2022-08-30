@@ -54,10 +54,18 @@ export const Filters = ({
         className="order-select"
         onChange={(e) => handleSelectOrder(e)}
       >
-        <option value="Alfabetic">Alfabetic(A-Z)</option>
-        <option value="AlfabeticRe">Alfabetic(Z-A)</option>
-        <option value="WeightMin">Weight Minimun</option>
-        <option value="WeightMax">Weight Maximun</option>
+        <option className="options" value="Alfabetic">
+          Alfabetic(A-Z)
+        </option>
+        <option className="options" value="AlfabeticRe">
+          Alfabetic(Z-A)
+        </option>
+        <option className="options" value="WeightMin">
+          Weight Minimun
+        </option>
+        <option className="options" value="WeightMax">
+          Weight Maximun
+        </option>
       </select>
       <select
         name="temps"
@@ -67,7 +75,7 @@ export const Filters = ({
         <option value="">Select a Temperament</option>
         {temps?.map((temps) => {
           return (
-            <option key={temps.id} value={temps.name}>
+            <option className="options" key={temps.id} value={temps.name}>
               {temps.name}
             </option>
           );
@@ -78,9 +86,15 @@ export const Filters = ({
         className="order-select"
         onChange={(e) => handleSelectSource(e)}
       >
-        <option value="All">All</option>
-        <option value="DogAPI">DogAPI</option>
-        <option value="UserDB">UserDB</option>
+        <option className="options" value="All">
+          All
+        </option>
+        <option className="options" value="DogAPI">
+          DogAPI
+        </option>
+        <option className="options" value="UserDB">
+          UserDB
+        </option>
       </select>
     </div>
   );

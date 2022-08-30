@@ -29,7 +29,7 @@ export default function Dog({
       <p className="dog-temps" style={styles}>
         {temp}
       </p>
-      <p className="dog-temps" style={styles}>
+      <p className="dog-weight" style={styles}>
         {weight_min ? weight_min : '???'} - {weight_max ? weight_max : '???'}{' '}
         dgrs
       </p>

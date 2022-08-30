@@ -53,18 +53,21 @@
 .info-label{
     font-family: 'Rubik Dirt', cursive;
     font-size: 1.5vw;
+    margin: 0;
+    margin-block: 0.7vw;
 }
 .dog-details{
     font-family: Roboto;
-    font-size: 1.5vw;
+    font-size: 1.3vw;
+    margin-block: 1vw;
 }
 .temps-container{
     position: absolute;
 
     width: 45%;
     height: 15%;
-    right: 5%;
-    bottom:5%;
+    left: 5%;
+    bottom:3%;
 }
 .return-button{
     position: absolute;
@@ -76,7 +79,7 @@
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
     letter-spacing: 1px;
-    font-size: 20px;
+    font-size: 2vw;
     color: white;
     transition: all 0.3s ease 0s;
     border-radius: 15px; 

@@ -4,7 +4,7 @@
     align-self: center;
     border-radius: 4vw;
     height: 5%;
-    margin-top: 1vw;
+    margin-top: 0.5vw;
     display: flex;
     box-shadow : 5px 5px 40px rgba(0, 0, 0, 0.667);
 }
@@ -23,7 +23,7 @@
     width: 30%;
     line-height: 5%;
     margin-left: 2%;
-    font-size: 22px;
+    font-size: 1.5vw;
     text-decoration: none;
 }
 .app-autor{
@@ -32,7 +32,7 @@
     align-self:center;
     position: absolute;
     left: 15%;
-    font-size: 18px;
+    font-size: 1.3vw;
     margin-top: 1.5vw;
 }
 .create-btn{
@@ -42,9 +42,9 @@
     position: relative;
     left: -120%;
     letter-spacing: 0.5px;
-    font-size: 16px;
+    font-size: 1vw;
     line-height: 160%;
-    margin-top: 3%;
+    margin-top: 5%;
     color: black;
     transition: all 0.3s ease 0s;
     border-radius: 15px; 
