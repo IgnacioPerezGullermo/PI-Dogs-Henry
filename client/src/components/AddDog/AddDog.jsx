@@ -9,7 +9,7 @@ export const AddDog = () => {
   const history = useHistory();
   const temps = useSelector((state) => state.temps);
   //Defino los errores del Form
-  const [formError, setFormError] = useState(true);
+  const [formError, setFormError] = useState({});
   //Bloqueo de boton de submit
   const [isSubmit, setisSubmit] = useState(true);
   //Defino el body del request
@@ -184,7 +184,12 @@ export const AddDog = () => {
       ...input,
       [e.target.name]: e.target.value,
     });
-    setFormError(validation(input));
+    setFormError(
+      validation({
+        ...input,
+        [e.target.name]: e.target.value,
+      })
+    );
   };
 
   //DELETE TEMPS
@@ -205,22 +210,37 @@ export const AddDog = () => {
   //SUBMIT
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Your dog has been created successfully');
-    dispatch(postDog(input));
-    setInput({
-      name: '',
-      life_span: '',
-      origin: '',
-      reference_image_id: '',
-      bred_for: '',
-      breed_group: '',
-      weight_min: '',
-      weight_max: '', // aca quiero meter los dos valores de...
-      height_min: '',
-      height_max: '',
-      temps: [],
-    });
-    history.push('/home');
+    if (
+      !formError.name &&
+      !formError.reference_image_id &&
+      !formError.weight_min &&
+      !formError.height_min &&
+      !formError.weight_max &&
+      !formError.height_max &&
+      !formError.breed_group &&
+      !formError.bred_for &&
+      !formError.origin &&
+      !formError.life_span
+    ) {
+      alert('Your dog has been created successfully');
+      dispatch(postDog(input));
+      setInput({
+        name: '',
+        life_span: '',
+        origin: '',
+        reference_image_id: '',
+        bred_for: '',
+        breed_group: '',
+        weight_min: '',
+        weight_max: '', // aca quiero meter los dos valores de...
+        height_min: '',
+        height_max: '',
+        temps: [],
+      });
+      history.push('/home');
+    } else {
+      return alert('Something went wrong. Please try again.');
+    }
   };
 
   return (
@@ -438,7 +458,12 @@ export const AddDog = () => {
           <Link to="/home">
             <button className="exit-form">Return</button>
           </Link>
-          <input className="submit-button" type="submit" value="Submit" />
+          <input
+            className={isSubmit ? 'submit-disabled' : 'submit-button'}
+            type="submit"
+            disabled={isSubmit}
+            value="Submit"
+          />
         </div>
       </form>
     </div>

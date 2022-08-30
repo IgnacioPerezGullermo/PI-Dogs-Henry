@@ -123,6 +123,22 @@
 .submit-button:hover{
     box-shadow : 2px 2px 15px rgba(228, 228, 228, 0.317); 
 }
+.submit-disabled{
+    position: absolute;
+    bottom: 0%;
+    right: 20%;
+    width: 22%;
+    height: 8%;
+    border-radius: 15px;
+    border: transparent;
+    font-size: 1.2vw;
+    background-color: gray;
+    color: white;cursor: pointer;
+    box-shadow : 5px 5px 10px rgba(19, 18, 18, 0.518);
+    font-family: Roboto, sans-serif;
+    transition: 500ms;
+}
+
 .exit-form{
     position: absolute;
     bottom: 0%;
