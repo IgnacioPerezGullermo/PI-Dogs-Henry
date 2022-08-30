@@ -1,4 +1,4 @@
-import React, { useEffect, useState, setState } from 'react';
+import React, { setState, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDogs, getTemps } from '../../redux/actions/index';
 import styles from '../../styles.scss';
@@ -13,11 +13,9 @@ export const Filters = ({
   filterTemps,
   setFilterTemps,
 }) => {
-  const [isShownTemps, setIsShownTemps] = useState(false);
-  const [isShownSource, setIsShownSource] = useState(false);
   const dispatch = useDispatch();
   const temps = useSelector((state) => state.temps);
-  //console.log(order, setOrder);
+  // Cargo los temps para el select
   useEffect(() => {
     dispatch(getTemps());
   }, [dispatch]);
@@ -28,6 +26,7 @@ export const Filters = ({
     setOrder({
       [e.target.name]: e.target.value,
     });
+    //Seteo en la pagina uno para que no vaya a una pagina inexistente
     setPagina(1);
   };
   //Info Origin
@@ -36,19 +35,18 @@ export const Filters = ({
     setFilterDb({
       [e.target.name]: e.target.value,
     });
+    //Seteo en la pagina uno para que no vaya a una pagina inexistente
     setPagina(1);
   };
-  // const handleCheckedTemps = (e) => {
-  //   setFilterDb({ ...filters, tempsFilters: e.target.value });
-  // };
+  //Temps
   const handleSelectTemps = (e) => {
     e.preventDefault();
     setFilterTemps({
       [e.target.name]: e.target.value,
     });
+    //Seteo en la pagina uno para que no vaya a una pagina inexistente
     setPagina(1);
   };
-  //console.log(order.order);
   return (
     <div className="container-filters">
       <select

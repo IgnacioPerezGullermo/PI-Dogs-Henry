@@ -4,57 +4,35 @@ import styles from '../../styles.css';
 
 export default function Dog({
   name,
-  temps,
   temp,
   id,
   reference_image_id,
   order,
+  weight_min,
+  weight_max,
 }) {
-  if (!temps) {
-    return (
-      <div className="dog-card" style={styles}>
-        <div className="image-container" style={styles}>
-          <img
-            className="dog-image"
-            style={styles}
-            src={reference_image_id}
-            alt="Imagen no disponble"
-          />
-        </div>
-        <Link className="link" to={'/dogs/' + id}>
-          <p className="dog-name" style={styles}>
-            {name}
-          </p>
-        </Link>
-        <p className="dog-temps" style={styles}>
-          {temp}
+  return (
+    <div className="dog-card" style={styles}>
+      <div className="image-container" style={styles}>
+        <img
+          className="dog-image"
+          style={styles}
+          src={reference_image_id}
+          alt="Imagen no disponble"
+        />
+      </div>
+      <Link className="link" to={'/dogs/' + id}>
+        <p className="dog-name" style={styles}>
+          {name}
         </p>
-      </div>
-    );
-  } else {
-    return (
-      <div className="dog-card" style={styles}>
-        <div className="image-container" style={styles}>
-          <img
-            className="dog-image"
-            style={styles}
-            src={reference_image_id}
-            alt="Imagen no disponble"
-          />
-        </div>
-        <Link to={'/dogs/' + id}>
-          <p className="dog-name" style={styles}>
-            {name}
-          </p>
-        </Link>
-        {temps ? (
-          <p className="dog-temps" style={styles}>
-            {temps.map((temp) => `${temp.name} `).join(', ')}
-          </p>
-        ) : (
-          <br />
-        )}
-      </div>
-    );
-  }
+      </Link>
+      <p className="dog-temps" style={styles}>
+        {temp}
+      </p>
+      <p className="dog-temps" style={styles}>
+        {weight_min ? weight_min : '???'} - {weight_max ? weight_max : '???'}{' '}
+        dgrs
+      </p>
+    </div>
+  );
 }

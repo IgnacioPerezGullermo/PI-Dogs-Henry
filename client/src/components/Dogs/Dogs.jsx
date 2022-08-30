@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import languages from '../../languages/languages.json';
-import { getDogs } from '../../redux/actions/index';
 import arrow from '../../img/arrow.png';
+import { getDogs } from '../../redux/actions/index';
 //import { Link } from 'react-router-dom';
+import RealLoader from '../../img/Real-Loader.gif';
 import styles from '../../styles.css';
 import Dog from '../Dog/Dog';
 import { NavBar } from '../NavBar/NavBar';
-import RealLoader from '../../img/Real-Loader.gif';
 
 export default function Dogs() {
+  //Creo estados para controlar los filtros y pasarselos como parametro para la ruta del request
   const [name, setName] = useState('');
   const [Pagina, setPagina] = useState(1);
   const [Limite, setLimite] = useState(8);
@@ -18,6 +18,7 @@ export default function Dogs() {
   const [filterTemps, setFilterTemps] = useState({ temps: null });
   const dispatch = useDispatch();
   const allDogs = useSelector((state) => state.allDogs);
+  //Aca acomodo el formato del dato que va a enviarse como "param"
   let Order = order.order;
   let Source = filterDb.source;
   let Temps = filterTemps.temps;
@@ -26,11 +27,13 @@ export default function Dogs() {
     dispatch(getDogs(name, Pagina, Limite, Order, Source, Temps));
   }, [name, Limite, Pagina, Order, Source, Temps, dispatch]);
   let pagis = allDogs.page;
+  //Seteo el paginado
   pagis ? (pagis = pagis.total) : (pagis = null);
   console.log(order.order);
   return (
     <div className="container" style={styles}>
       <NavBar
+        //Le paso todos los estados de filtros a la nav para que se encargue de actualizarlos
         name={name}
         setName={setName}
         order={order}
@@ -48,13 +51,15 @@ export default function Dogs() {
             return (
               <div key={dog.id}>
                 <Dog
+                  //paso por props la informacion a las cards
                   order={order}
                   key={dog.id}
                   id={dog.id}
                   name={dog.name}
                   reference_image_id={dog.reference_image_id}
                   temp={dog.temperament}
-                  temps={dog.temperaments}
+                  weight_min={dog.weight_min}
+                  weight_max={dog.weight_max}
                 />
               </div>
             );
@@ -66,6 +71,7 @@ export default function Dogs() {
       <div className="pagination-container">
         <ul className="buttons-bar">
           {pagis?.map((page) => {
+            //Creo los botones del paginado
             return (
               <button
                 key={page.page}

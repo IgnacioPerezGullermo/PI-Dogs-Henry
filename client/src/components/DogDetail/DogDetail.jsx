@@ -1,7 +1,7 @@
-import React, { Component, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { cleanDogs, deleteDetails, getDogDetail } from '../../redux/actions';
+import { deleteDetails, getDogDetail } from '../../redux/actions';
 import styles from '../../styles.css';
 import RealLoader from '../../img/Real-Loader.gif';
 
@@ -10,12 +10,13 @@ export default function DogDetail() {
   const params = useParams();
   let history = useHistory();
   const myDog = useSelector((state) => state.dogDetail);
-
+  //Traigo el detalle
   useEffect(() => {
     dispatch(getDogDetail(params.id));
   }, [dispatch, params.id]);
 
   const handleClick = (e) => {
+    //Elimino la data del perro para que no aparezca la anterior antes de cargar uno nuevo
     dispatch(deleteDetails());
     history.push('/home');
   };

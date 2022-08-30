@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { cleanDogs, getTemps, postDog } from '../../redux/actions/index';
+import { getTemps, postDog } from '../../redux/actions/index';
 import styles from '../../styles.scss';
-import { validate, valuesSubmit } from './utilidades';
 
 export const AddDog = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const temps = useSelector((state) => state.temps);
-  const allDogs = useSelector((state) => state.allDogs);
+  //Defino los errores del Form
   const [formError, setFormError] = useState(true);
+  //Bloqueo de boton de submit
   const [isSubmit, setisSubmit] = useState(true);
+  //Defino el body del request
   const [input, setInput] = useState({
     name: '',
     life_span: '',
@@ -25,113 +26,152 @@ export const AddDog = () => {
     height_max: '',
     temps: [],
   });
+  //Traigo los temps para el select
   useEffect(() => {
     dispatch(getTemps());
   }, [dispatch]);
 
+  //Validacion de existencia de dato
   function exists(str) {
     if (!str) return true;
     return false;
   }
-
+  //Validacion del nombre
   function validName(str) {
     if (str.length < 1 || str.length > 30) return true;
     if (typeof str !== 'string') return true;
     return false;
   }
+  //Validacion de la url
   function validImage(str) {
-    if (str.length < 1 || str.length > 200) return true;
+    if (str.length < 1 || str.length > 400) return true;
     if (typeof str !== 'string') return true;
     return false;
   }
+  //Validacion del breed Group
   function validBreedGroup(str) {
     if (str.length < 1 || str.length > 30) return true;
     if (typeof str !== 'string') return true;
     return false;
   }
+  //Validacion del breed For
   function validBredFor(str) {
     if (str.length < 1 || str.length > 50) return true;
     if (typeof str !== 'string') return true;
     return false;
   }
+  //Validacion del origen
   function validOrigin(str) {
     if (str.length < 1 || str.length > 30) return true;
     if (typeof str !== 'string') return true;
     return false;
   }
-
+  //Validacion del peso
   function validWeight(str) {
     if (str.length < 1 || str.length > 100) return true;
     if (typeof str !== 'string') return true;
     return false;
   }
-
+  //Validacion de la altura
   function validHeight(str) {
     if (str.length < 1 || str.length > 100) return true;
     if (typeof str !== 'string') return true;
     return false;
   }
-
+  //Validacion de existencia de life span
   function validLife(str) {
     if (str.length < 1 || typeof str !== 'string') return true;
     return false;
   }
-
+  //Validacion del largo del string de life span
   function longLife(str) {
     if (str.length > 15) return true;
     return false;
   }
-
+  //La validacion de todos los campos
   function validation(data) {
+    //Seteo un objeto que contenga todos los errores por encontrar
     let errors = {};
 
-    if (validImage(data.reference_image_id) === true)
+    //Validacion de campo name
+    if (!data.name) {
+      if (exists(data.name) === true) errors.name = 'Provide a name';
+    }
+    if (data.name && validName(data.name) === true)
+      errors.name = 'The name is not valid';
+    //Validacion de campo reference_image_id
+    if (!data.reference_image_id) {
+      if (exists(data.reference_image_id) === true)
+        errors.reference_image_id = 'Provide a image url';
+    }
+    if (data.reference_image_id && validImage(data.reference_image_id) === true)
       errors.reference_image_id = 'You need to provide a valid image url';
-
-    if (validBreedGroup(data.breed_group) === true)
+    //Validacion de campo breed_group
+    if (!data.breed_group) {
+      if (exists(data.breed_group) === true)
+        errors.breed_group = 'Provide a breed group';
+    }
+    if (data.breed_group && validBreedGroup(data.breed_group) === true)
       errors.breed_group = 'You need to provide a breed group';
-
-    if (validBredFor(data.bred_for) === true)
+    //Validacion de campo bred_for
+    if (!data.bred_for) {
+      if (exists(data.bred_for) === true)
+        errors.bred_for = 'Provide a bred for';
+    }
+    if (data.bred_for && validBredFor(data.bred_for) === true)
       errors.bred_for = 'You need to provide a breed for';
-
-    if (validOrigin(data.origin) === true)
+    //Validacion de campo origin
+    if (!data.origin) {
+      if (exists(data.origin) === true) errors.origin = 'Provide an origin';
+    }
+    if (data.origin && validOrigin(data.origin) === true)
       errors.origin = 'You need to provide an origin';
-
-    if (exists(data.weight_min) === true)
-      errors.weightMin = 'You need to provide a minimum weight';
-
-    if (exists(data.weight_max) === true)
-      errors.weightMax = 'You need to provide a maximum weight';
-
-    if (validName(data.name) === true) errors.name = 'The name is not valid';
-
-    if (validWeight(data.weight_max) === true)
+    //Validacion de campos weight
+    if (!data.weight_min) {
+      if (exists(data.weight_min) === true)
+        errors.weight = 'You need to provide a minimum weight';
+    }
+    if (data.weight_min && validWeight(data.weight_min) === true)
+      errors.weight = 'The weight is not valid';
+    if (!data.weight_max) {
+      if (exists(data.weight_max) === true)
+        errors.weight = 'You need to provide a maximum weight';
+    }
+    if (data.weight_max && validWeight(data.weight_max) === true)
       errors.weight = 'The weight is not valid';
 
-    if (validWeight(data.weight_min) === true)
-      errors.weight = 'The weight is not valid';
-
-    if (validHeight(data.height_min) === true)
+    //Validacion de campo height
+    if (!data.height_min) {
+      if (exists(data.height_min) === true)
+        errors.height = 'You need to provide a minimum height';
+    }
+    if (data.height_min && validHeight(data.height_min) === true)
+      errors.height = 'The height is not valid';
+    if (!data.height_max) {
+      if (exists(data.height_max) === true)
+        errors.height = 'You need to provide a maximum height';
+    }
+    if (data.height_max && validHeight(data.height_max) === true)
       errors.height = 'The height is not valid';
 
-    if (validHeight(data.height_max) === true)
-      errors.height = 'The height is not valid';
-
-    if (data.height_min > data.height_max)
+    if (parseInt(data.height_min, 10) > parseInt(data.height_max, 10))
       errors.height =
         'The maximum height cannot be minor than the minimum height';
 
-    if (data.weight_min > data.weight_max)
+    if (parseInt(data.weight_min, 10) > parseInt(data.weight_max, 10))
       errors.weight =
         'The maximum weight cannot be minor than the minimum weight';
-
+    //Validacion de campo life_span
+    if (!data.life_span) {
+      if (exists(data.life_span) === true)
+        errors.life_span = 'Provide a life span';
+    }
     if (validLife(data.life_span) === true)
       errors.life_span = 'The life span is not valid';
-
     if (longLife(data.life_span) === true)
       errors.life_span =
-        'Nos gustaría que sean eternos pero debemos disfrutarlos mientras estén con nosotors';
-
+        'We wish they live forever, but we need a valid life span';
+    //Disabled
     if (Object.keys(errors).length === 0) {
       setisSubmit(false);
     }
@@ -144,7 +184,7 @@ export const AddDog = () => {
       ...input,
       [e.target.name]: e.target.value,
     });
-    setFormError(validation(input));
+    //setFormError(validation(input));
   };
 
   //DELETE TEMPS
@@ -165,22 +205,25 @@ export const AddDog = () => {
   //SUBMIT
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Your dog has been created successfully');
-    dispatch(postDog(input));
-    setInput({
-      name: '',
-      life_span: '',
-      origin: '',
-      reference_image_id: '',
-      bred_for: '',
-      breed_group: '',
-      weight_min: '',
-      weight_max: '', // aca quiero meter los dos valores de...
-      height_min: '',
-      height_max: '',
-      temps: [],
-    });
-    history.push('/home');
+    setFormError(validation(input));
+    if (!formError) {
+      alert('Your dog has been created successfully');
+      dispatch(postDog(input));
+      setInput({
+        name: '',
+        life_span: '',
+        origin: '',
+        reference_image_id: '',
+        bred_for: '',
+        breed_group: '',
+        weight_min: '',
+        weight_max: '', // aca quiero meter los dos valores de...
+        height_min: '',
+        height_max: '',
+        temps: [],
+      });
+      history.push('/home');
+    }
   };
 
   return (

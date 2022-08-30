@@ -23,6 +23,7 @@ const Search = ({ Pagina, setPagina, name, setName }) => {
     e.preventDefault();
     setInput('');
     setName('');
+    //Seteo en la pagina uno para que no vaya a una pagina inexistente
     setPagina(1);
   };
 

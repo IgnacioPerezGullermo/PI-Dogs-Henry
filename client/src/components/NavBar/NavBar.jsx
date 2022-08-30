@@ -17,12 +17,13 @@ export const NavBar = ({
   setFilterTemps,
 }) => {
   const [inputText, setInputText] = useState('');
+
+  //Control del Search
   let inputHandler = (e) => {
     var minuculas = e.target.value.toLowerCase();
     setInputText(minuculas);
   };
 
-  //console.log(order, setOrder);
   return (
     <div className="navbar">
       <Link className="app-name" to="/home">

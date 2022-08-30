@@ -4,6 +4,7 @@ import Landing from './components/Landing/Landing';
 import Dogs from './components/Dogs/Dogs';
 import { AddDog } from './components/AddDog/AddDog';
 import DogDetail from './components/DogDetail/DogDetail';
+import NotFound from './components/NotFound/NotFound';
 //import styles from './styles.css';
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
           <Route exact path="/home" component={Dogs} />
           <Route exact path="/create" component={AddDog} />
           <Route exact path="/dogs/:id" component={DogDetail} />
-          <Route path="*" component={Landing} />
+          <Route path="*" component={NotFound} />
         </Switch>
       </div>
     </BrowserRouter>
