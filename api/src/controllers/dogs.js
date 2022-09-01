@@ -75,7 +75,7 @@ const getAll = async (req, res) => {
           result.results.length
             ? res.status(200).json(result)
             : res.status(404).send('No data');
-        } else {
+        } else if (filterTemps) {
           // Filtrado por temperamento
           let allDogs = await getAllDogs(false, order, filterDB);
           console.log(allDogs.length);
@@ -114,35 +114,13 @@ const getAll = async (req, res) => {
             ? res.status(200).json(result)
             : res.status(404).send('No data');
         }
-      } else {
-        //Caso en que no se suministre parametros
-        const allDogs = await getAllDogs(false, 'Alfabetic');
-        const totalPages = Math.ceil(allDogs.length / limit);
-        const totalPagesArray = [];
-        for (var i = 0; i < totalPages; i++) {
-          totalPagesArray.push({ page: i + 1 });
-        }
-        const result = {};
-        result.page = {
-          total: totalPagesArray,
-        };
-        if (endIndex < allDogs.length) {
-          result.next = {
-            page: parseInt(page) + 1,
-            limit: limit,
-          };
-        }
-        if (startIndex > 0) {
-          result.previous = {
-            page: parseInt(page) - 1,
-            limit: limit,
-          };
-        }
-        result.results = allDogs.slice(startIndex, endIndex);
-        result.results.length
-          ? res.status(200).json(result)
-          : res.status(404).send('No data');
       }
+    } else {
+      //Caso en que no se suministre parametros
+      const allDogs = await getAllDogs();
+      const result = {};
+
+      allDogs ? res.status(200).json(allDogs) : res.status(404).send('No data');
     }
   } catch (error) {
     res.status(404).send(error.message);

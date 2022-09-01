@@ -81,7 +81,7 @@ const getAllDogs = async (name, order, filterDB) => {
       d.name.toLowerCase().includes(name.toLowerCase())
     );
     return dogData;
-  } else {
+  } else if (order && filterDB) {
     // Enviamos la info filtrada por la fuente de la info
     if (filterDB === 'DogAPI') {
       // Aca entregaremos toda la info de Dog API
@@ -105,6 +105,11 @@ const getAllDogs = async (name, order, filterDB) => {
       const orderedDogs = orderFunction(order, allDogs);
       return orderedDogs;
     }
+  } else if (!name && !order && !filterDB) {
+    const apiInfo = await getApiInfo();
+    const DBinfo = await getDBDog();
+    const allDogs = apiInfo.concat(DBinfo);
+    return allDogs;
   }
 };
 
