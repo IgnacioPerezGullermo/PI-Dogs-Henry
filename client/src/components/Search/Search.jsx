@@ -15,6 +15,7 @@ const Search = ({ Pagina, setPagina, name, setName }) => {
     e.preventDefault();
     if (input !== '') {
       setName(input);
+      setPagina(1);
     } else {
       alert('Write a dog');
     }
@@ -24,7 +25,6 @@ const Search = ({ Pagina, setPagina, name, setName }) => {
     setInput('');
     setName('');
     //Seteo en la pagina uno para que no vaya a una pagina inexistente
-    setPagina(1);
   };
 
   return (

@@ -80,6 +80,7 @@ const getAllDogs = async (name, order, filterDB) => {
     const dogData = allDogs.filter((d) =>
       d.name.toLowerCase().includes(name.toLowerCase())
     );
+    console.log(dogData.length);
     return dogData;
   } else if (order && filterDB) {
     // Enviamos la info filtrada por la fuente de la info

@@ -39,9 +39,11 @@ const getAll = async (req, res) => {
       }
       //Extraigo los 8 que voy a mostrar
       result.results = allDogs.slice(startIndex, endIndex);
-      allDogs
-        ? res.status(200).json(result)
-        : res.status(404).json({ error: 'Name not found' });
+      if (allDogs.length) {
+        res.status(200).json(result);
+      } else {
+        res.status(200).json('Dogs not found');
+      }
     } else if (page != undefined) {
       // Busqueda con parametros de ordenamiento y filtrado
       if (order && filterDB) {

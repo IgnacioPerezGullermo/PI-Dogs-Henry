@@ -30,8 +30,7 @@ export default function Dog({
         {temp}
       </p>
       <p className="dog-weight" style={styles}>
-        {weight_min ? weight_min : '???'} - {weight_max ? weight_max : '???'}{' '}
-        dgrs
+        {weight_min ? weight_min : '???'} - {weight_max ? weight_max : '???'} kg
       </p>
     </div>
   );
